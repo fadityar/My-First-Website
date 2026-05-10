@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fun Facts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .fact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.2em;
+            line-height: 1.6;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        button {
+            background-color: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .fact-counter {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Fun Facts 🎉</h1>
+        <div class="fact-box" id="factBox">
+            Click the button to reveal a fun fact!
+        </div>
+        <button onclick="showRandomFact()">Get New Fact</button>
+        <div class="fact-counter">
+            Fact <span id="factCount">0</span> of <span id="totalFacts">0</span>
+        </div>
+    </div>
+
+    <script>
+        const facts = [
+            "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible!",
+            "A group of flamingos is called a 'flamboyance' - one of the most fittingly named groups in the animal kingdom!",
+            "Octopuses have three hearts - two pump blood to the gills, while the third pumps blood to the rest of the body.",
+            "Bananas are berries, but strawberries are not - botanically speaking, a berry develops from the ovary of a flowering plant.",
+            "A jiffy is an actual unit of time equal to one trillionth of a second, used in physics!",
+            "Cleopatra lived closer to the moon landing than to the construction of the Great Pyramid of Giza.",
+            "Wombats produce cube-shaped droppings - scientists are still not entirely sure why!",
+            "The fingerprints of koalas are so similar to human fingerprints that they could confuse crime scene investigators.",
+            "Tardigrades (water bears) can survive in the vacuum of space and extreme temperatures!",
+            "A day on Venus is longer than a year on Venus - it takes longer to rotate on its axis than to orbit the sun.",
+            "Scotland's national animal is a unicorn - it has been since the 12th century!",
+            "Carrots were originally purple, not orange. The orange ones were cultivated in the Netherlands in the 1600s.",
+            "The smell of petrichor (rain on dry earth) comes from oils released by plants and bacteria called geosmin.",
+            "A group of crows is called a 'murder' - fitting for such intelligent birds!",
+            "The Eiffel Tower can be 15 cm taller in summer due to thermal expansion of the metal!",
+            "Sloths only defecate once a week, and it can cause them to lose up to 30% of their body weight!",
+            "A sneeze travels at about 100 mph and can reach up to 26 feet away!",
+            "The Great Wall of China is not visible from space with the naked eye - it's mostly a myth!",
+            "Polar bears have black skin under their white fur, and their fur is actually transparent!",
+            "An ostrich's eye is bigger than its brain - and each eye weighs more than the brain!"
+        ];
+
+        let currentFactIndex = -1;
+        let factsShown = 0;
+
+        function showRandomFact() {
+            currentFactIndex = Math.floor(Math.random() * facts.length);
+            const factBox = document.getElementById('factBox');
+            factBox.textContent = facts[currentFactIndex];
+            factsShown++;
+            document.getElementById('factCount').textContent = factsShown;
+            document.getElementById('totalFacts').textContent = facts.length;
+        }
+
+        // Initialize
+        document.getElementById('totalFacts').textContent = facts.length;
+    </script>
+</body>
+</html>
